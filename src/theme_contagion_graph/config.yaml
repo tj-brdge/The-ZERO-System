@@ -1,0 +1,28 @@
+# Confirmed requirements only. Null/empty scientific settings are unresolved,
+# not zero values, negative evidence, or permission to choose a default.
+schema_version: 1
+project_name: Theme Contagion Graph
+study:
+  start: "2021-01-01"
+  end: "2026-06-30"
+  warmup_start: null
+layers:
+  - supply
+  - ownership
+  - coverage
+  - text_sim
+theme:
+  name: AI data-center power demand
+  definition: null
+  anchors: []
+  required_anchor_count: 8
+measurement:
+  human_label_queue_size: 300
+  below_retrieval_threshold_count: 100
+  substantive_precision_min: 0.85
+  retrieval_loss_max_exclusive: 0.10
+  retrieval_threshold: null
+  adoption_policy: null
+null_models:
+  adoption_reassignment_repetitions: 500
+  graph_rewiring_repetitions: 200

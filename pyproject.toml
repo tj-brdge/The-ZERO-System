@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel>=0.44"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "theme-contagion-graph"
+version = "0.1.0"
+description = "Foundation for retrospective research into investment-theme disclosure"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["PyYAML>=6,<7"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+theme-contagion = "theme_contagion_graph.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+theme_contagion_graph = ["config.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"

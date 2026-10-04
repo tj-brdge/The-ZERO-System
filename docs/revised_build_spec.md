@@ -1,504 +1,320 @@
-# Theme Contagion Graph — revised build specification
-
-Status: **new-project foundation prepared; original-specification reconciliation
-remains open**. Prepared 2026-10-04 for
-[`tj-brdge/The-ZERO-System`](https://github.com/tj-brdge/The-ZERO-System).
-
-The repository cloned with no commits, refs, or working-tree files. The user then
-clarified: “We are building them together :-)”. This authorizes treating the work
-as a new project rather than waiting for nonexistent legacy source. The first
-step therefore creates a minimal Python package, configuration, offline CLI and
-new foundation tests. No legacy refactor or assertion-preservation claim is made.
-The first-execution limit and approval-before-commit rule remain in effect.
-
-The original build specification referenced in the attachment was not supplied.
-Its exact package layout, eight anchors, original threshold values and original
-step numbers cannot be recovered from the amendments. This document preserves
-all supplied requirements, but does **not** claim integration with that missing
-specification. Missing scientific inputs remain explicit, unimplemented settings.
-The newly chosen layout is recorded separately in `docs/decisions.md`.
-
-## Authority and provenance
-
-1. The user designated The-ZERO-System as the target repository.
-2. The supplied amendment text below takes precedence over conflicting original
-   requirements; original requirements not explicitly changed remain required.
-3. The original specification is unavailable. Its original step numbers and exact
-   acceptance criteria cannot yet be mapped without inventing traceability.
-4. Proposed choices in [decisions.md](decisions.md) are pending approval and do not
-   amend the requirements.
-5. The user's clarification supersedes the assumption that an existing implementation
-   is available. The completed new-project foundation was approved for commit and
-   push on 2026-10-04. Later steps still require separate authorization.
-
-Source: user attachment `pasted-text.txt`, SHA-256
-`c4033ec6cb906d5f77fed3f937d0ccd36c05df9c154dd9b223d4d2d434c6caa5`.
-The text under “Supplied requirements” is reproduced without edits so its details,
-including the first-execution scope, remain auditable.
-
-## Traceability and acceptance changes
-
-The section references in this table refer to the **supplied amendments**, not to
-unknown original step numbers. Every row still requires reconciliation against the
-original specification. The table is a navigation aid; the full requirements below
-are authoritative.
-
-| Amendment section | Retained requirement or intended scope | Explicit amendment / changed acceptance |
-| --- | --- | --- |
-| 1 | Name; point-in-time S&P 500, 2021-01-01 through 2026-06-30; FMP transcripts and SEC 10-K/10-Q; four layers; Python/PostgreSQL/pgvector; AI-power theme and eight original anchors; GLP-1 portability | Disclosure-threshold adoption; predictive association claims; hyperscale data-center power qualifies without explicit AI; expected industry sequence is a hypothesis |
-| 2 | Incremental execution | One approved step at a time; inspect, state changes/checks, test and report; no commit before approval; no fabricated evidence |
-| 3 | Historical study and reproducibility | Separate effective, knowledge, ingestion and computation times; immutable source versions and lineage; warm-up/censoring; security/entity distinction; origin-time universe; physical-truncation equivalence test |
-| 4 | FMP and SEC ingestion | Official documentation and sanitized real responses before parsers; verify entitlement/coverage/pagination; historical SEC submissions and full text; explicit extraction failures; immutable caches and idempotency |
-| 5 | Primary labels; initial 300-label queue with 100 below threshold; precision >= 0.85; retrieval loss < 10% | Weighted uncertainty-aware evaluation and held-out labels; exact evidence and explicit errors; deduplication/token limits; company-quarter/event audit and separately approved tolerances |
-| 6 | Initial configurable passage threshold and compatible state labels | Separate historical adoption/activity/observability; threshold-crossing availability; analyst-only exclusion; include event quarter, exclude later quarters; observed-calendar-quarter fading |
-| 7 | Supply, ownership, coverage, text_sim | Directional supply exposures; no blanket top-k for observed supply; as-of edge provenance and missingness; verified ownership units/mappings; activity-overlap coverage proxy; deterministic full-text aggregation; approve unresolved definitions |
-| 8 | Complementary log-log model; entity-clustered uncertainty; 500/200 null defaults | Lag every predictor; strong baseline and ablations; common eligible observations; distinguish descriptive and forecast time specifications; full fitted artifacts; explicit valid nulls and failures; no causal claims |
-| 9 | Emergence and forecasting objectives | Defined incidence/growth/source maturation/breadth; no identified reproduction number; as-of partitions; one-quarter forecast gate before cascades; rolling-origin metrics, censoring, uncertainty; four-quarter origins no later than 2025-06-30 |
-| 10 | Recognition-lag interface and theme portability | Actor attribution and theme evidence; negative lags and censoring; versioned theme packages; independent GLP-1 calibration |
-| 11 | Regression verification | Required leakage, state, direction, aggregation, missingness, forecast, ingestion, run immutability and truncated-database tests, in their relevant later phases |
-| 12 | Foundation/refactor only | Inspect six named files; run baseline; integrate documents; preserve assertions/constants/behavior during layout/config/CLI move; no scientific or schema changes; report and stop for approval |
-
-## Foundation acceptance status
-
-- Target repository located and cloned; empty starting state confirmed.
-- Applicable repository instructions: none present in the checkout or checked
-  ancestor `AGENTS.md` locations.
-- Baseline tests, source moves, old-assertion preservation and unchanged-constant
-  comparisons: **not applicable to the confirmed new project**.
-- New minimal foundation: `src/theme_contagion_graph/`, packaged `config.yaml`,
-  `cli.py`, module/console entry points, `.env.example`, pytest tests and packaging.
-- The configuration includes only supplied values and explicit unresolved
-  scientific inputs. CLI commands inspect/validate configuration only.
-- Original-specification integration and exact original step/layout/anchor
-  recovery: **unresolved**, not a claim of completed reconciliation.
-- No database migration, source ingestion, embedding, classifier, state machine,
-  graph construction, fitted model or simulation has been implemented.
-- Foundation commit/push approved on 2026-10-04; subsequent implementation still
-  requires step authorization and coordination with the user's incoming partner.
-
-See [foundation_report.md](foundation_report.md) for actual checks and results.
-
-## Supplied requirements
-
-You are implementing the “Theme Contagion Graph” research prototype in an existing repository.
-
-Read the attached original build specification and the actual repository before making changes. Treat the requirements below as explicit amendments: where they conflict with the original specification, this prompt takes precedence. Preserve all original requirements not explicitly changed here.
-
-Your job is to build a defensible, reproducible research system—not merely produce plausible-looking results.
-
-Do not implement the entire project in one pass. Your first execution is limited to the foundation/refactor task described at the end of this prompt.
-
-# 1. Research objective and claim boundaries
-
-The primary research question is:
-
-“Which company-relationship layers improve prediction of subsequent substantive disclosure of an investment theme, beyond a company’s own prior language and its industry’s adoption pattern?”
-
-Use “adoption” internally to mean:
-
-“The first observed crossing of a predefined threshold of substantive, company-attributable discussion in the observed document corpus.”
-
-Do not equate this with the first date of actual business exposure, economic adoption, or strategic change.
-
-Retain the project name, but describe network-model results as predictive associations. Do not claim that coefficients, null-model percentiles, or forecast improvements establish causal transmission.
-
-Retain the original:
-- Point-in-time S&P 500 study window: 2021-01-01 through 2026-06-30.
-- Documents: FMP earnings transcripts and SEC 10-K/10-Q filings.
-- Layers: supply, ownership, coverage, text_sim.
-- Python/PostgreSQL/pgvector stack, repository layout, and coding conventions.
-- AI data-center power demand definition and eight supplied anchors.
-- Theme-agnostic architecture, with GLP-1 as a later portability test.
-
-For the first theme, substantive hyperscale data-center power demand qualifies even without an explicit AI reference. Generic AI discussion without the defined power, generation, grid, electrical-equipment, or cooling connection does not qualify.
-
-The expected industry sequence is a hypothesis to investigate, not ground truth to reproduce. Never tune labels or thresholds to force that sequence.
-
-# 2. Execution discipline
-
-Work one approved step at a time.
-
-Before implementing a step:
-- Inspect the relevant existing code, schema, fixtures, and repository instructions.
-- State the intended changes and acceptance checks.
-- Identify prerequisites that are missing.
-
-After implementing a step:
-- Run applicable offline tests.
-- Report changes, actual test results, data coverage or row counts where applicable, unresolved issues, and decisions needing review.
-- Stop for approval.
-
-Do not commit until the completed step is approved. Do not start the next step without authorization.
-
-Never fabricate source data, identifiers, relationships, labels, API responses, metrics, test results, or successful executions.
-
-Synthetic fixtures are allowed for unit tests when clearly labeled as synthetic. They must never be presented as real API fixtures, empirical validation, or production data.
-
-If credentials, network access, a database, model weights, or human labels are unavailable, report the affected work as blocked or not run. Complete independent work that can be verified, but do not claim the blocked acceptance criteria passed.
-
-# 3. Point-in-time and provenance contracts
-
-Implement explicit distinctions between:
-- Economic/effective time: valid_from, valid_to, period_end, or equivalent.
-- known_at: when that exact source version became publicly available.
-- ingested_at: when this system acquired it.
-- computed_at: when a derived artifact was produced.
-
-Preserve source versions and corrections. Do not overwrite an earlier record and retain its earlier known_at for revised contents.
-
-Add knowledge-time provenance to historical identifiers, classifications, membership information, and entity attributes. Do not silently backdate present-day FMP attributes or identifiers into history.
-
-For transcripts, distinguish the call timestamp from verified availability of the transcript text/version. Missing availability evidence requires an explicit policy and limitation; do not silently substitute the call date.
-
-For derived features and edges:
-- Record source dependencies.
-- Record the maximum source known_at across required inputs.
-- Keep computation time separate from source availability.
-- Select all inputs using the relevant as-of cutoff.
-
-Every run must identify:
-- Code commit or source-tree state.
-- Full configuration hash.
-- Source snapshots and content hashes.
-- Parser and chunker versions.
-- Theme-package and prompt versions.
-- Model and tokenizer revisions.
-- Seeds and parameters.
-- Upstream run dependencies and training cutoffs.
-
-Pinning a modern model makes the analysis reproducible, not historically deployable. Label the study as retrospective measurement with frozen tools unless historical model availability is separately established.
-
-Add a configurable pre-window warm-up sufficient to initialize every lookback and prior-adoption status. Flag pre-window adopters, uncertain histories, and left-censored observations. Do not treat index entry or the study start as an automatic first adoption.
-
-Preserve exact membership intervals and distinguish securities from CIK-level entities. Validate membership with historical reconciliation, not only aggregate counts. Do not assume that security counts and company counts are interchangeable.
-
-For forecasts, use the universe known and eligible at the forecast origin. Specify exit/censoring treatment without selecting companies using future membership.
-
-Required point-in-time regression test:
-For cutoff T, compare features built from the complete database with as-of filtering against features rebuilt after physically removing source versions unavailable at T. With the same frozen configuration and fitted artifacts, results must match within declared deterministic tolerances.
-
-# 4. Ingestion and external API requirements
-
-Verify current official documentation and capture a sanitized real response before implementing a parser for an external endpoint. Verify pagination, historical coverage, response shape, entitlement, timestamp semantics, and rate limits.
-
-Do not guess an endpoint’s fields from its name or manufacture a fixture.
-
-Keep live calls in ingestion paths. Unit tests must not require network access, paid APIs, or model downloads.
-
-SEC ingestion must:
-- Follow additional historical submissions files, not only the recent-filings array.
-- Preserve acceptance timestamps, accession identifiers, and raw filing provenance.
-- Distinguish original and amended filings.
-- Retain full filing text for supply-chain extraction, in addition to the sections used for theme scoring.
-- Report failed section extractions rather than treating them as empty content.
-
-Maintain idempotency, resumability, retries, compliant identification/rate limiting, and immutable raw-response caching.
-
-# 5. Theme measurement and evaluation
-
-Preserve substantive/peripheral/irrelevant as the primary labels and retain section and speaker-role provenance.
-
-Store:
-- Exact evidence spans and source locations.
-- Classification rationale.
-- Raw classifier response.
-- Parse/validation status.
-- Model, prompt, and theme-package versions.
-
-Invalid JSON, failed model calls, or missing text must be explicit error states—not converted to “irrelevant.”
-
-Add separate attributes for:
-- Opportunity, adverse impact, mixed, or unclear.
-- Realized/current activity, forecast/planned activity, conditional risk, or unclear.
-
-These attributes must not silently change the primary adoption definition.
-
-Use token-aware embedding inputs and verify the selected model’s actual limits. Never assume a character limit guarantees token compatibility or embed an entire long filing section through silent truncation.
-
-Deduplicate overlapping and repeated evidence before applying passage-count thresholds. Preserve repetition and source provenance for inspection. Arbitrary chunk boundaries must not create independent evidence.
-
-Retain the initial 300-chunk human-label queue, including 100 below the retrieval threshold, but:
-- Save sampling strata, population sizes, and inclusion probabilities.
-- Use appropriate weighting for population-level retrieval-loss estimates.
-- Separate development labels from held-out evaluation.
-- Extend labeling when uncertainty or subgroup coverage is inadequate.
-- Never use illustrative prompt examples as held-out ground truth.
-
-Retain the original passage-level acceptance targets:
-- Substantive precision at least 0.85.
-- Retrieval loss below 10% of true substantive passages.
-
-Report uncertainty rather than treating point estimates as conclusive.
-
-Also require a company-quarter/event audit:
-- Inspect predicted adopters and sampled non-adopters.
-- Measure adoption-event precision and adoption-date error.
-- Audit early adopters particularly carefully.
-- Test sensitivity to chunking and adoption thresholds.
-
-Propose event-level tolerances for approval before fitting the network model. Do not claim measurement validation without actual human labels.
-
-# 6. State model and risk-set construction
-
-Separate historical adoption, current activity, and observability.
-
-Store at least:
-- ever_adopted.
-- first_adoption_at.
-- first_adoption_quarter.
-- current-quarter evidence/activity.
-- source-specific observability and processing coverage.
-- separate analyst-question evidence counts.
-
-Keep the original passage-threshold rule as the initial configurable policy, but apply it to deduplicated, eligible evidence.
-
-The adoption timestamp is when enough publicly available evidence existed to cross the threshold. For a two-evidence rule, this may be the availability of the second qualifying item. Do not automatically use the first passage timestamp or quarter-end.
-
-Analyst-only evidence must not trigger company adoption.
-
-For the first-adoption hazard:
-- Determine eligibility using status before the outcome quarter.
-- Include the quarter in which first adoption occurs.
-- Remove subsequent quarters from the first-adoption risk set.
-- Do not allow faded companies to re-enter as first-time adopters.
-
-“Faded” is a descriptive activity status, not reversal of historical adoption. It requires two consecutive sufficiently observed calendar quarters below threshold. Missing documents must not count as quiet quarters.
-
-Insufficient observability is unknown/missing, not evidence of non-adoption. Make the exclusion/censoring policy explicit.
-
-Preserve the original state labels where useful for compatibility, but derive them from explicit fields rather than relying on an ambiguous four-state variable.
-
-# 7. Graph-layer contracts
-
-Record edge evidence, dependency lineage, temporal availability, staleness, and missingness.
-
-Apply top-k sparsification to similarity layers, not automatically to observed supply relationships.
-
-Specify:
-- Self-edge exclusion.
-- Directed versus undirected semantics.
-- Union versus mutual-neighbor symmetrization.
-- Tie handling.
-- Minimum similarity thresholds.
-- Zero-denominator behavior.
-- Missing-layer indicators.
-- Edge expiry/staleness rules.
-- Layer normalization before graph union.
-
-Report coverage before and after sparsification.
-
-Supply:
-- Preserve commercial direction as supplier -> customer.
-- Implement separate upstream and downstream exposure features.
-- Add a tiny directional fixture proving which adopter affects which exposure.
-- Keep observed revenue share nullable.
-- Store any default modeling weight separately from observed disclosures.
-- Preserve unresolved and outside-universe counterparties for coverage reporting.
-- Extract from full filing text, not only selected sections.
-- Keep the licensed-data import hook documented and unimplemented until a source is supplied.
-
-Ownership:
-- Define the holder-vector weighting mathematically before implementation.
-- Select the largest filers using only information available at the snapshot.
-- Verify historical units, amendments, reporting periods, and identifier mappings.
-- Use public availability, not quarter-end holdings dates, for known_at.
-- Do not backfill historical CUSIP mappings from current profiles without provenance.
-- Report mapping coverage and missing holdings separately from zero holdings.
-- Test sensitivity to broadly shared holders and normalization choices.
-
-Coverage:
-- Treat broker ratings/target activity as an activity-overlap proxy unless actual coverage rosters validate the stronger interpretation.
-- Verify usable historical endpoints and account entitlement.
-- Normalize broker identities and preserve aliases.
-- Distinguish absent activity from absent source coverage.
-
-Text similarity:
-- Specify token-aware Item 1 chunking and deterministic document-vector aggregation.
-- Use the latest eligible filing as of the cutoff.
-- Add a sensitivity analysis excluding theme-bearing passages.
-- Preserve the aggregation/model configuration in run lineage.
-
-Do not silently select unresolved scientific definitions. Propose them in the decision log for approval before implementing the affected step.
-
-# 8. Modeling and nulls
-
-Construct all predictors using information available at the prediction cutoff.
-
-Lag every predictor—not only network exposure—including:
-- Document volume.
-- Own theme scores and peripheral discussion.
-- Analyst-question evidence.
-- Industry adoption rates.
-- Exposure/activity indicators.
-- Source-availability features.
-
-Build a strong non-network baseline using the company’s own lagged language, lagged industry adoption, and observability controls.
-
-Then compare:
-1. Sector-only baseline.
-2. Strong non-network baseline.
-3. Strong baseline plus text similarity.
-4. Strong baseline plus all available layers.
-5. Individual-layer additions and leave-one-layer-out ablations.
-
-Use identical eligible observations for comparable models, or explicitly report coverage-induced differences.
-
-Keep the complementary log-log first-adoption model.
-
-Separate:
-- A retrospective descriptive specification that may include quarter fixed effects.
-- A forecasting specification that can be evaluated at an unseen future quarter.
-
-For the initial forecast specification, use an intercept and strictly lagged features; do not require an unseen quarter fixed effect. Any alternative time baseline must be documented, versioned, and trained using only available history.
-
-Save the complete fitted model, link function, parameter ordering, transformations, feature definitions, training data lineage, and diagnostics—not just network coefficients.
-
-Report event counts, convergence, separation, collinearity, coefficient stability, and uncertainty. Include the original entity-clustered uncertainty estimate and document relevant shared-time/sector sensitivity checks.
-
-Rewrite the nulls explicitly:
-
-Adoption reassignment null:
-- Define the hypothesis being tested.
-- Reassign adopter identities among eligible, observable companies.
-- Preserve declared sector-quarter event counts and first-adoption consistency.
-- Rebuild affected histories and exposures.
-- Reject/report infeasible draws rather than producing invalid panels.
-
-Graph rewiring null:
-- Preserve directedness and the declared degree constraints.
-- Specify treatment of weights, sector mixing, and temporal persistence.
-- Diagnose what the null preserves and destroys.
-- Include stricter sensitivity nulls where feasible.
-
-Retain 500 and 200 repetitions as configurable defaults, but report usable repetitions and failed fits.
-
-Null percentiles are diagnostics, not causal identification.
-
-# 9. Emergence and forecasting
-
-For initial emergence reporting, use:
-- New adopters.
-- Explicitly defined adoption growth and acceleration.
-- Incidence relative to the eligible observed risk set.
-- Source maturation.
-- Clearly defined network breadth.
-
-Do not present the originally proposed R_t as an identified reproduction number. Use a descriptive label and explicit formula for any growth ratio.
-
-Historical as-of features must not use end-of-study communities. Use a partition available at the relevant cutoff or a previously frozen partition. Explain comparability when partitions change.
-
-Implement and validate one-quarter-ahead prediction before multi-quarter Monte Carlo cascades.
-
-Backtesting must:
-- Use rolling origins.
-- Fit/tune all learned components only on training information.
-- Preserve label-development/held-out separation.
-- Use origin-time membership and explicit censoring.
-- Report metrics by origin and horizon.
-- Avoid labeling unobserved future quarters as non-adoption.
-
-With outcomes ending 2026-06-30, complete four-quarter evaluation requires origins no later than 2025-06-30.
-
-Report:
-- ROC AUC when defined.
-- Precision-recall metrics.
-- Precision at 20 and lift over the eligible-population rate.
-- Brier score.
-- Calibration plots.
-- Coverage, event counts, and uncertainty.
-
-For later simulations:
-- Use the full fitted predictor and inverse complementary log-log link:
-  p = 1 - exp(-exp(eta)).
-- Specify which future graphs and exogenous features are frozen or evolved.
-- Never insert realized future covariates.
-- Update entities simultaneously within each simulated quarter.
-- Record seeds and simulation assumptions.
-- Distinguish process randomness from parameter/model uncertainty.
-
-Do not proceed to cascades merely because they were listed in the original spec. First report whether one-quarter forecasts add stable value over the strong non-network baseline.
-
-# 10. Recognition lag and theme portability
-
-Extend the recognition-event interface to include actor identity, actor role, analyst/PM/team attribution, attribution-effective dates where needed, and evidence linking an event to a theme.
-
-A position change alone must not automatically establish theme recognition.
-
-Preserve negative recognition lags. Treat no observed internal event as censored, not zero lag. Use clearly labeled synthetic fixtures only until real platform data is supplied.
-
-Define a versioned theme package containing:
-- Definition and scope exclusions.
-- Anchors.
-- Labeled prompt examples.
-- Retrieval settings.
-- Adoption-policy parameters.
-- Evaluation metadata.
-
-GLP-1 must run without pipeline code changes, but must receive theme-specific calibration and validation rather than inheriting AI-power thresholds unquestioningly.
-
-# 11. Required regression tests, added in the relevant phases
-
-Include tests proving that:
-- Future documents, identifiers, classifications, and corrections cannot affect earlier features.
-- A first-adoption event remains in the hazard risk set.
-- Prior adopters never re-enter as first adopters.
-- Missing documents do not trigger fading.
-- Analyst-only evidence does not trigger adoption.
+# Theme Contagion Graph requirements
+
+## Research question and scope
+
+Which company-relationship layers improve prediction of subsequent substantive
+disclosure of an investment theme beyond a company's own prior language and its
+industry's adoption pattern?
+
+**Adoption** means the first observed crossing of a predefined threshold of
+substantive, company-attributable discussion in the observed document corpus.
+It does not date actual business exposure, economic adoption or strategic change.
+Network coefficients, forecast improvements and null percentiles describe
+predictive associations; they do not establish causal transmission.
+
+- Study the point-in-time S&P 500 from **2021-01-01 through 2026-06-30**.
+- Use FMP earnings transcripts and SEC 10-K/10-Q filings.
+- Use the `supply`, `ownership`, `coverage` and `text_sim` layers, subject to
+  feasibility assessment and explicit deferral in the minimum-version plan.
+- Use Python, PostgreSQL and pgvector; follow the package layout and coding conventions.
+- Start with AI data-center power demand and eight approved anchors. Substantive
+  hyperscale data-center power demand qualifies without an explicit AI reference.
+  Generic AI discussion without a power, generation, grid, electrical-equipment
+  or cooling connection does not qualify.
+- Keep the architecture theme-agnostic, with GLP-1 as a later portability test.
+
+The expected industry sequence is a hypothesis, not ground truth. Labels and
+thresholds must never be tuned to reproduce it. The exact theme definition,
+anchors and initial passage/retrieval thresholds require source evidence or an
+explicitly approved proposal; unspecified values must not be invented.
+
+## Working method
+
+Work one reviewable phase at a time: inspect applicable instructions, code, schema
+and fixtures; state scope, missing prerequisites and acceptance checks; run the
+applicable offline checks; open one draft PR and report actual results. Stop for
+review before the next phase. Setup proceeds through repo hygiene, theme
+definition, feasibility, then a minimum-version plan. Database and record-keeping
+design follow feasibility results; these setup phases do not build the pipeline.
+
+Never fabricate source data, identifiers, relationships, labels, API responses,
+metrics or successful executions. Clearly label synthetic test fixtures and
+separate them from source samples, empirical validation and production data.
+If credentials, network, a database, model weights or human labels are unavailable,
+mark affected checks **blocked** or **not run**, with the reason; finish independent
+verifiable work without claiming blocked criteria passed. Report measured coverage
+or row counts where applicable, failures, unresolved issues and review decisions.
+
+Scientific choices require approval before implementation. Record proposals in
+[decisions.md](decisions.md). Keep refactors behavior-preserving; report discovered
+bugs separately rather than hiding scientific/parser/state/model changes in a
+move. Use append-only schema migrations and preserve existing offline assertions.
+Keep configuration outside code and credentials out of version control.
+
+## Time, provenance and universe
+
+Distinguish economic/effective time (`valid_from`, `valid_to`, `period_end` or
+equivalent), `known_at` (public availability of that exact source version),
+`ingested_at` (system acquisition) and `computed_at` (derived-artifact creation).
+Preserve source versions and corrections; revised contents cannot overwrite an
+older version while retaining its earlier `known_at`.
+
+Historical identifiers, classifications, membership and entity attributes need
+knowledge-time provenance. Never backdate current FMP attributes or identifiers.
+For transcripts, keep call time distinct from verified text/version availability;
+missing availability evidence needs an explicit policy and limitation, not a
+silent substitution of call date.
+
+Derived features and edges must record source dependencies and the maximum source
+`known_at` across required inputs. Keep computation time separate, and select all
+inputs using the applicable as-of cutoff. Every run must identify:
+
+- Code commit or source-tree state and full configuration hash.
+- Source snapshots and content hashes; parser and chunker versions.
+- Theme-package and prompt versions; model and tokenizer revisions.
+- Seeds, parameters, upstream run dependencies and training cutoffs.
+
+Frozen modern models provide reproducibility, not historical deployability. Label
+the study **retrospective measurement with frozen tools** unless historical model
+availability is independently established.
+
+Configure a pre-window warm-up sufficient for every lookback and prior-adoption
+status. Flag pre-window adopters, uncertain histories and left-censored observations.
+Neither study start nor index entry automatically establishes a first adoption.
+Preserve exact membership intervals, distinguish securities from CIK-level
+entities, and reconcile historical membership rather than checking only aggregate
+counts. Security and company counts are not interchangeable.
+
+Forecast eligibility uses the universe known at the origin. Define exit/censoring
+without selecting companies using future membership. For cutoff T, features from
+a complete database filtered as of T must match a rebuild after physically removing
+source versions unavailable at T, using identical frozen configuration and fitted
+artifacts and declared deterministic tolerances.
+
+## Sources and ingestion
+
+Before implementing an endpoint parser, verify current official documentation and
+capture a sanitized real response. Check pagination, historical coverage, response
+shape, entitlement, timestamp semantics and rate limits. Do not guess fields from
+endpoint names or manufacture source fixtures. Keep live calls in ingestion paths;
+unit tests need no network, paid APIs or model downloads.
+
+SEC ingestion must follow additional historical submissions files, not just the
+recent-filings array. Preserve acceptance timestamps, accession identifiers and raw
+filing provenance, distinguish original and amended filings, and retain full filing
+text for supply extraction as well as theme-scoring sections. Report failed section
+extraction explicitly rather than representing it as empty content.
+
+Maintain idempotency, resumability, retries, compliant identification/rate limiting
+and immutable raw-response caching.
+
+## Theme measurement and validation
+
+Use **substantive / peripheral / irrelevant** as the primary labels, retaining
+section and speaker-role provenance. Store exact evidence spans and locations,
+classification rationale, raw classifier response, parse/validation status and
+model/prompt/theme-package versions. Invalid JSON, failed calls and missing text
+are explicit errors, never fallback "irrelevant" labels.
+
+Separately record impact (opportunity, adverse impact, mixed, unclear) and activity timing
+(realized/current, forecast/planned, conditional risk, unclear). These attributes
+must not silently change the adoption definition.
+
+Embedding inputs must be token-aware and respect verified model limits. Character
+limits do not guarantee token compatibility; long filing sections must not be
+silently truncated. Deduplicate overlapping/repeated evidence before passage-count
+thresholds, retaining repetition and source provenance for inspection. Arbitrary
+chunk boundaries do not create independent evidence.
+
+Start with a **300-chunk human-label queue, including 100 below the retrieval
+threshold**. Save sampling strata, population sizes and inclusion probabilities;
+weight population retrieval-loss estimates appropriately. Separate development
+from held-out evaluation labels, extend labeling when uncertainty or subgroup
+coverage is inadequate, and never treat illustrative prompt examples as held-out
+ground truth.
+
+Passage targets are **substantive precision >= 0.85** and **retrieval loss < 10% of
+true substantive passages**. Report uncertainty rather than treating point
+estimates as conclusive. Also audit company-quarter/events: inspect predicted
+adopters and sampled non-adopters, measure adoption-event precision and date error,
+audit early adopters carefully, and test sensitivity to chunking and adoption
+thresholds. Obtain approval of event-level tolerances before fitting network
+models. Measurement validation requires actual human labels.
+
+## Adoption state and risk set
+
+Keep historical adoption, current activity and observability separate. Store
+`ever_adopted`, `first_adoption_at`, `first_adoption_quarter`, current-quarter
+evidence/activity, source-specific observability/processing coverage and separate
+analyst-question counts. Derive compatible state labels from these explicit fields
+rather than relying on an ambiguous four-state variable.
+
+Use the approved initial passage-threshold policy on deduplicated eligible evidence.
+The event timestamp is when enough publicly available evidence crossed the
+threshold: a two-evidence policy may cross at the second item's availability.
+Do not automatically use the first passage time or quarter-end. Analyst-only
+evidence cannot trigger company adoption.
+
+First-adoption hazard eligibility uses status before the outcome quarter. Include
+the first-adoption quarter, remove subsequent quarters, and never allow prior
+adopters to re-enter, including companies whose activity has faded.
+
+"Faded" describes activity, not a reversal of historical adoption. It requires two
+consecutive sufficiently observed calendar quarters below threshold. Missing
+documents are not quiet quarters. Insufficient observability means unknown/missing,
+not non-adoption; make exclusion/censoring policy explicit.
+
+## Graph layers
+
+Record edge evidence, dependency lineage, temporal availability, staleness and
+missingness. Specify self-edge exclusion, directed/undirected semantics,
+union/mutual-neighbor symmetrization, tie handling, minimum similarities,
+zero-denominator behavior, missing-layer indicators, expiry/staleness rules and
+normalization before graph union. Apply top-k sparsification to similarity layers,
+not automatically to observed supply relationships. Report coverage before and
+after sparsification. Approve unresolved definitions before implementing them.
+
+### Supply
+
+Preserve supplier -> customer direction and separate upstream/downstream exposures.
+Use a tiny directional fixture showing which adopter affects each exposure.
+Observed revenue share is nullable; default modeling weights are separate from
+observed disclosures. Preserve unresolved and outside-universe counterparties for
+coverage reporting. Extract from full filing text, not only selected sections.
+Document the licensed-data import hook but leave it unimplemented until a source
+is supplied.
+
+### Ownership
+
+Define holder-vector weighting mathematically before implementation. Select the
+largest filers using information available at the snapshot. Verify historical
+units, amendments, reporting periods and identifier mappings. Use public
+availability for `known_at`, not holdings quarter-end. Do not backfill historical
+CUSIP mappings from current profiles without provenance. Report mapping coverage
+and distinguish missing from zero holdings. Test broadly shared holders and
+normalization choices in sensitivity analysis.
+
+### Coverage
+
+Broker ratings/target activity is an activity-overlap proxy unless actual coverage
+rosters validate a stronger interpretation. Verify historical endpoints and account
+entitlement, normalize broker identities while preserving aliases, and distinguish
+absent activity from absent source coverage.
+
+### Text similarity
+
+Specify token-aware Item 1 chunking and deterministic document-vector aggregation.
+Use the latest eligible filing at the cutoff. Include sensitivity analysis excluding
+theme-bearing passages, and preserve aggregation/model configuration in run lineage.
+
+## Models and nulls
+
+All predictors must use information available at the prediction cutoff. Lag every
+predictor, including document volume, own theme scores/peripheral discussion,
+analyst-question evidence, industry adoption, exposure/activity indicators and
+source-availability features. The strong non-network baseline includes own lagged
+language, lagged industry adoption and observability controls.
+
+Compare the sector-only baseline, strong non-network baseline, strong baseline plus
+text similarity, strong baseline plus all available layers, individual-layer
+additions and leave-one-layer-out ablations. Use identical eligible observations
+or explicitly report coverage-induced differences. The feasible minimum version
+may defer layers, but must document those deferrals.
+
+Use a complementary log-log first-adoption model. Separate retrospective descriptive
+models (which may include quarter fixed effects) from forecasts for unseen quarters.
+The initial forecast uses an intercept and strictly lagged features, without an
+unseen-quarter fixed effect. Any alternative time baseline must be documented,
+versioned and trained on available history only.
+
+Save the complete fitted model, link function, parameter ordering, transformations,
+feature definitions, training lineage and diagnostics, not just network coefficients.
+Report event counts, convergence, separation, collinearity, coefficient stability
+and uncertainty. Include entity-clustered uncertainty and document relevant
+shared-time/sector sensitivity checks.
+
+The **adoption reassignment null** must state its hypothesis, reassign identities
+among eligible observable companies, preserve declared sector-quarter event counts
+and first-adoption consistency, rebuild affected histories/exposures, and
+reject/report infeasible draws rather than produce invalid panels.
+
+The **graph rewiring null** must preserve directedness and declared degree
+constraints, specify weight/sector-mixing/temporal-persistence treatment, diagnose
+what it preserves and destroys, and include stricter sensitivity nulls where feasible.
+Keep **500 reassignment and 200 rewiring repetitions** as configurable defaults;
+report usable repetitions and failed fits. Null percentiles are diagnostics, not
+causal identification.
+
+## Emergence, forecasts and later simulations
+
+Initial emergence reporting includes new adopters, explicitly defined adoption
+growth/acceleration, incidence relative to the eligible observed risk set, source
+maturation and defined network breadth. Do not present a growth ratio as an
+identified reproduction number; provide a descriptive label and explicit formula.
+
+Historical features must not use end-of-study communities. Use a cutoff-available
+or previously frozen partition and explain comparability when partitions change.
+Validate one-quarter-ahead prediction before multi-quarter Monte Carlo cascades;
+first report whether it adds stable value over the strong non-network baseline.
+
+Backtests use rolling origins. Fit/tune every learned component on training
+information only, preserve development/held-out label separation, use origin-time
+membership and explicit censoring, and report by origin and horizon. Unobserved
+future quarters are not negatives. With outcomes ending **2026-06-30**, complete
+four-quarter evaluation requires origins no later than **2025-06-30**.
+
+Report ROC AUC when defined, precision-recall metrics, precision at 20 and lift over
+the eligible-population rate, Brier score, calibration plots, coverage, event counts
+and uncertainty.
+
+Later simulations use the full fitted predictor and inverse complementary log-log
+link `p = 1 - exp(-exp(eta))`. Specify frozen/evolving future graphs and exogenous
+features; never insert realized future covariates. Update entities simultaneously
+within each simulated quarter, record seeds/assumptions, and distinguish process
+randomness from parameter/model uncertainty. Listing simulations as a goal does
+not authorize proceeding without the one-quarter forecast evidence.
+
+## Recognition lag and portability
+
+Recognition events need actor identity and role, analyst/PM/team attribution,
+attribution-effective dates where needed, and evidence connecting the event to a
+theme. A position change alone cannot establish recognition. Preserve negative
+lags; absent internal events are censored, not zero lag. Use clearly labeled
+synthetic fixtures only until real platform data is supplied.
+
+A versioned theme package contains the definition/exclusions, anchors, labeled
+prompt examples, retrieval settings, adoption-policy parameters and evaluation
+metadata. GLP-1 must work without pipeline code changes and receive its own
+calibration/validation rather than inheriting AI-power thresholds without testing.
+
+## Required regression tests
+
+Add these in the relevant implementation phases:
+
+- Future documents, identifiers, classifications and corrections cannot affect earlier features.
+- The first-adoption event quarter remains in the hazard risk set; prior adopters never re-enter.
+- Missing documents do not cause fading; analyst-only evidence does not cause adoption.
 - Duplicate/overlapping evidence does not inflate thresholds.
 - Supply exposure direction is correct.
-- Long-text aggregation does not silently truncate the document.
-- Undefined similarities and missing graph layers are handled explicitly.
-- All forecasting predictors respect the cutoff.
-- Forecasts do not depend on unseen quarter fixed effects.
+- Long-text aggregation does not silently truncate documents.
+- Undefined similarities and missing layers are handled explicitly.
+- All forecast predictors respect cutoffs; forecasts do not need unseen quarter fixed effects.
 - Later unobserved outcomes are not coded as negatives.
-- Repeated ingestion is idempotent.
-- A new run does not overwrite an old run.
-- Truncated-database and as-of-filtered feature builds agree.
+- Repeated ingestion is idempotent and new runs do not overwrite old runs.
+- Physically truncated and as-of-filtered feature builds agree within declared tolerances.
 
-# 12. First execution: foundation/refactor only
+## Editorial changes in this revision
 
-Do the following now, and nothing from later implementation phases:
-
-1. Read applicable repository instructions and inspect the actual files, especially:
-   - 001_schema.sql
-   - 002_schema_additions.sql
-   - fmp_client.py
-   - step2_universe.py
-   - step3_transcripts.py
-   - test_offline.py
-
-2. Establish a baseline by running the existing offline tests when feasible. Report pre-existing failures separately.
-
-3. Create docs/revised_build_spec.md integrating the original specification with these explicit amendments. Preserve traceability to the original steps and identify changed acceptance criteria.
-
-4. Create docs/decisions.md distinguishing:
-   - Original requirements retained.
-   - Changes explicitly required by this prompt.
-   - Proposed defaults requiring later approval.
-   - Blocked prerequisites and unresolved source questions.
-
-5. Perform the original behavior-preserving refactor:
-   - Move code into the requested package layout.
-   - Convert offline tests to pytest while preserving their assertions.
-   - Move existing constants into config.yaml without changing their values or behavior.
-   - Add/update .env.example without including secrets.
-   - Wire the existing functionality through cli.py.
-   - Add only the packaging/import/configuration support needed for this refactor.
-
-6. Do not alter scientific logic, membership reconstruction, transcript parsing, state definitions, database semantics, or model behavior during this move.
-   - Record discovered bugs in the backlog.
-   - Do not hide bug fixes inside the refactor.
-   - Keep schema changes for later append-only migrations.
-
-7. Run the refactored offline tests and relevant import/configuration checks.
-
-8. Stop and report:
-   - Files inspected.
-   - Files changed and why.
-   - Baseline versus final test results.
-   - Any behavior differences.
-   - What was not run and why.
-   - Unresolved decisions.
-   - The proposed next step and its acceptance checks.
-
-Do not implement new ingestion, embeddings, classification, graph construction, modeling, or simulations in this first execution. Do not claim data coverage or model performance that has not been measured. Wait for approval after the refactor report.
+- Removed assistant-directed prompt framing, the completed refactor checklist,
+  obsolete file references and repository-creation narrative. They were execution
+  history rather than standing research requirements; Git retains that history.
+- Removed amendment crosswalk tables, duplicate status reports and instructions
+  to reconcile an unavailable document. Unspecified scientific values remain open.
+- Reworded references to "original" definitions/rules as approved initial policies;
+  no missing anchor or threshold was selected or replaced.
+- Replaced the old pre-commit approval ceremony with the requested draft-PR phase
+  review boundary. Scientific choices still require approval before implementation.
+- Placed schema design after feasibility and made layer deferral explicit for the
+  minimum version, as requested. The full research/evaluation requirements remain.
+- Consolidated repeated prose and lists. No substantive research requirement,
+  quantitative target or regression-test obligation was removed.

@@ -16,7 +16,8 @@ predictive associations; they do not establish causal transmission.
 - Use FMP earnings transcripts and SEC 10-K/10-Q filings.
 - Use the `supply`, `ownership`, `coverage` and `text_sim` layers, subject to
   feasibility assessment and explicit deferral in the minimum-version plan.
-- Use Python, PostgreSQL and pgvector; follow the package layout and coding conventions.
+- Use Python, PostgreSQL and pgvector; follow the existing `src/theme_contagion_graph/`
+  package layout and the conventions already in the code.
 - Start with AI data-center power demand and eight approved anchors. Substantive
   hyperscale data-center power demand qualifies without an explicit AI reference.
   Generic AI discussion without a power, generation, grid, electrical-equipment
@@ -46,9 +47,8 @@ verifiable work without claiming blocked criteria passed. Report measured covera
 or row counts where applicable, failures, unresolved issues and review decisions.
 
 Scientific choices require approval before implementation. Record proposals in
-[decisions.md](decisions.md). Keep refactors behavior-preserving; report discovered
-bugs separately rather than hiding scientific/parser/state/model changes in a
-move. Use append-only schema migrations and preserve existing offline assertions.
+[decisions.md](decisions.md). Do not hide behavior changes inside refactors;
+report discovered bugs separately and use append-only schema migrations.
 Keep configuration outside code and credentials out of version control.
 
 ## Time, provenance and universe
@@ -302,19 +302,3 @@ Add these in the relevant implementation phases:
 - Later unobserved outcomes are not coded as negatives.
 - Repeated ingestion is idempotent and new runs do not overwrite old runs.
 - Physically truncated and as-of-filtered feature builds agree within declared tolerances.
-
-## Editorial changes in this revision
-
-- Removed assistant-directed prompt framing, the completed refactor checklist,
-  obsolete file references and repository-creation narrative. They were execution
-  history rather than standing research requirements; Git retains that history.
-- Removed amendment crosswalk tables, duplicate status reports and instructions
-  to reconcile an unavailable document. Unspecified scientific values remain open.
-- Reworded references to "original" definitions/rules as approved initial policies;
-  no missing anchor or threshold was selected or replaced.
-- Replaced the old pre-commit approval ceremony with the requested draft-PR phase
-  review boundary. Scientific choices still require approval before implementation.
-- Placed schema design after feasibility and made layer deferral explicit for the
-  minimum version, as requested. The full research/evaluation requirements remain.
-- Consolidated repeated prose and lists. No substantive research requirement,
-  quantitative target or regression-test obligation was removed.

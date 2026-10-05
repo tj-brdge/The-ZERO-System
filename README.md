@@ -39,5 +39,5 @@ parameters and warm-up remain unresolved; `check-config` validates structure,
 not research readiness. Work proceeds one phase and draft PR at a time.
 
 Read the [requirements](docs/revised_build_spec.md),
-[open decisions](docs/decisions.md), [contributor guide](CLAUDE.md), and
-[changelog](CHANGELOG.md).
+[open decisions](docs/decisions.md), [contributor guide](CLAUDE.md),
+[Codex instructions](AGENTS.md), and [changelog](CHANGELOG.md).
